@@ -41,8 +41,8 @@ jobs:
         cd dart-sdk/sdk
         zip -q -r dart-sdk-android-arm64.zip out/ReleaseAndroidARM64/dart-sdk
     - name: Release SDK
-      uses: ncipollo/release-action@v1.5.0
+      uses: ncipollo/release-action@v1
       with:
         artifacts: "dart-sdk/sdk/*.zip"
-        tag: "sdk"
-        token: ${{ secrets.RElEASE_TOKEN }}
+        tag: "Dart-SDK"
+        token: ${{ secrets.RELEASE_TOKEN }}
