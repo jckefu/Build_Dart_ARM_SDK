@@ -52,8 +52,8 @@ jobs:
         ./tools/build.py --no-goma -m release --arch=arm64 --os=android create_sdk
     - name: Zip SDK
       run: |
-        cd dart-sdk/sdk
-        zip -q -r dart-sdk-android-arm64.zip out/ReleaseAndroidARM64/dart-sdk
+        cd dart-sdk/sdk/out
+        zip -q -r dart-sdk-android-arm64.zip ReleaseAndroidARM64/dart-sdk
     - name: Get current date
       id: date
       run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
@@ -65,7 +65,7 @@ jobs:
     - name: Release SDK
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "dart-sdk/sdk/*.zip"
+        artifacts: "dart-sdk/sdk/out/*.zip"
         tag: Dart-SDK-${{ steps.date.outputs.date }}
         token: ${{ secrets.RELEASE_TOKEN }}
         allowUpdates: true
