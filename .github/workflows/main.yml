@@ -26,7 +26,7 @@ jobs:
     - name: Prepare
       run: |
         sudo apt-get update
-        sudo apt-get install g++-aarch64-linux-gnu
+        sudo apt-get install g++-aarch64-linux-gnu g++-arm-linux-gnueabihf
         sudo apt-get install g++-multilib
         sudo apt-get install zip
     - name: Get Resource
@@ -51,8 +51,8 @@ jobs:
         ls tools/bots
         ./tools/build.py --no-goma -m release --arch=arm64 --os=android create_sdk
         ./tools/build.py --no-goma -m release --arch=arm --os=android create_sdk
-        ./tools/build.py --no-goma -m release --arch=arm64 --os=linux create_sdk
-        ./tools/build.py --no-goma -m release --arch=arm --os=linux create_sdk
+        ./tools/build.py --no-goma -m release --arch=arm64 create_sdk
+        ./tools/build.py --no-goma -m release --arch=arm create_sdk
     - name: Zip SDK
       run: |
         cd dart-sdk/sdk/out
