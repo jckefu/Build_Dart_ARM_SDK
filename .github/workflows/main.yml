@@ -42,7 +42,7 @@ jobs:
         sed -i "s#/data/local/tmp#/data/data/com.termux/files/home/tmp#g" runtime/bin/directory_android.cc
         sed -n '431,433p' runtime/bin/directory_android.cc
         cd ../
-        echo "target_os = ['android']" >> .gclient
+        echo "target_os = ['android','linux']" >> .gclient
         gclient sync
     - name: Build SDK
       run: |
