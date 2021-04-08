@@ -37,7 +37,7 @@ jobs:
         cd dart-sdk
         fetch dart
         cd sdk
-        git checkout 2.12.0-223.0.dev
+        git checkout master
         ls
         sed -i "s#/data/local/tmp#/data/data/com.termux/files/home/tmp#g" runtime/bin/directory_android.cc
         sed -n '431,433p' runtime/bin/directory_android.cc
@@ -50,6 +50,9 @@ jobs:
         cd dart-sdk/sdk
         ls tools/bots
         ./tools/build.py --no-goma -m release --arch=arm64 --os=android create_sdk
+        ./tools/build.py --no-goma -m release --arch=arm --os=android create_sdk
+        ./tools/build.py --no-goma -m release --arch=arm64 --os=linux create_sdk
+        ./tools/build.py --no-goma -m release --arch=arm --os=linux create_sdk
     - name: Zip SDK
       run: |
         cd dart-sdk/sdk/out
